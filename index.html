@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Economía - Dr. José Rodolfo Chávez Mejías</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #2c5282;
+            --accent: #d4af37;
+            --light: #f5f7fa;
+            --dark: #1e293b;
+            --success: #10b981;
+            --light-accent: #f5e8c9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+        }
+        
+        .logo i {
+            font-size: 48px;
+            color: var(--secondary);
+        }
+        
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .author-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            max-width: 600px;
+        }
+        
+        .author-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .author-name i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            padding: 18px 25px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin: 30px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 12px;
+            background: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .units-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .unit-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .unit-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .unit-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .unit-content {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .unit-content h4 {
+            color: var(--primary);
+            margin: 15px 0 8px;
+        }
+        
+        .unit-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .unit-content li {
+            margin-bottom: 6px;
+        }
+        
+        .resources {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .resources h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resources h4 i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        .resource-btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .resource-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .resource-btn i {
+            margin-right: 8px;
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .book-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .book-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .book-body {
+            padding: 20px;
+        }
+        
+        .book-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .book-author {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .book-link {
+            display: block;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .book-link:hover {
+            background: var(--secondary);
+        }
+        
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .calendar-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--success);
+        }
+        
+        .calendar-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .calendar-title i {
+            margin-right: 10px;
+            color: var(--success);
+        }
+        
+        .event-list {
+            list-style: none;
+        }
+        
+        .event-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+        }
+        
+        .event-date {
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .event-day {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .event-month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .event-info {
+            flex-grow: 1;
+        }
+        
+        .event-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .event-desc {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-style: italic;
+            color: var(--primary);
+            border-top: 1px dashed var(--accent);
+            background: rgba(245, 247, 250, 0.5);
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .units-container, .book-grid, .calendar {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .resource-links {
+                flex-direction: column;
+            }
+            
+            .resource-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h1>ECONOMÍA</h1>
+                        <div class="subtitle">Programa de Estudios - Segundo Semestre</div>
+                        <div class="author-info">
+                            <div class="author-name">
+                                <i class="fas fa-user-tie"></i> Dr. José Rodolfo Chávez Mejías
+                            </div>
+                            <div class="copyright">© 2025 - Todos los derechos reservados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="#descripcion" class="nav-link active"><i class="fas fa-info-circle"></i> Descripción</a>
+            <a href="#unidades" class="nav-link"><i class="fas fa-book"></i> Unidades</a>
+            <a href="#bibliografia" class="nav-link"><i class="fas fa-book-open"></i> Bibliografía</a>
+            <a href="#calendario" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario</a>
+            <a href="#recursos" class="nav-link"><i class="fas fa-link"></i> Recursos</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section id="descripcion" class="section">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> Descripción del Curso</h2>
+            <p>El curso está diseñado para abordar los contenidos introductorios de los aspectos teórico-conceptuales de economía. Además, incluye los conceptos y categorías de la ciencia económica, los conocimientos acerca de los temas actuales de la economía nacional e internacional.</p>
+            
+            <div class="resources">
+                <h4><i class="fas fa-graduation-cap"></i> Recursos Académicos</h4>
+                <div class="resource-links">
+                    <a href="https://scholar.google.com" class="resource-btn" target="_blank"><i class="fas fa-search"></i> Google Académico</a>
+                    <a href="https://scielo.org" class="resource-btn" target="_blank"><i class="fas fa-book"></i> SciELO</a>
+                    <a href="https://www.jstor.org" class="resource-btn" target="_blank"><i class="fas fa-archive"></i> JSTOR</a>
+                    <a href="https://dialnet.unirioja.es" class="resource-btn" target="_blank"><i class="fas fa-database"></i> Dialnet</a>
+                </div>
+            </div>
+            
+            <div class="author-signature">
+                <p>"La economía es demasiado importante para dejarla solo en manos de los economistas. Su comprensión es fundamental para el desarrollo de cualquier sociedad."</p>
+                <p>- Dr. José Rodolfo Chávez Mejías</p>
+            </div>
+        </section>
+        
+        <section id="unidades" class="section">
+            <h2 class="section-title"><i class="fas fa-book"></i> Unidades Temáticas</h2>
+            
+            <div class="units-container">
+                <!-- Unidad 1 -->
+                <div class="unit-card">
+                    <h3 class="unit-title"><i class="fas fa-1"></i> Unidad 1: Conceptos Básicos</h3>
+                    <div class="unit-content">
+                        <h4>Objetivos Específicos</h4>
+                        <ul>
+                            <li>Distinguir los fenómenos de carácter económico y su campo de estudio</li>
+                            <li>Interpretar la evolución de la actividad productiva y del pensamiento económico</li>
+                            <li>Relacionar los fenómenos económicos y jurídicos</li>
+                        </ul>
+                        
+                        <h4>Contenidos</h4>
+                        <ul>
+                            <li>El concepto de economía</li>
+                            <li>El objeto de estudio de la economía</li>
+                            <li>Corrientes fundamentales de la economía</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resources">
+                        <h4><i class="fas fa-link"></i> Recursos Digitales</h4>
+                        <div class="resource-links">
+                            <a href="https://scholar.google.com/scholar?q=conceptos+básicos+economía" class="resource-btn" target="_blank">Google Académico</a>
+                            <a href="https://scielo.org/es/buscar/?q=conceptos+económicos" class="resource-btn" target="_blank">SciELO</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Unidad 2 -->
+                <div class="unit-card">
+                    <h3 class="unit-title"><i class="fas fa-2"></i> Unidad 2: Ramas de la Economía</h3>
+                    <div class="unit-content">
+                        <h4>Objetivos Específicos</h4>
+                        <ul>
+                            <li>Integrar las diferentes ramas de la ciencia económica</li>
+                            <li>Diferenciar los temas en el ámbito microeconómico y macroeconómico</li>
+                            <li>Establecer la importancia de la política económica</li>
+                        </ul>
+                        
+                        <h4>Contenidos</h4>
+                        <ul>
+                            <li>Economía positiva y normativa</li>
+                            <li>Microeconomía: oferta y demanda</li>
+                            <li>Macroeconomía: sistema económico, cuentas nacionales</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resources">
+                        <h4><i class="fas fa-link"></i> Recursos Digitales</h4>
+                        <div class="resource-links">
+                            <a href="https://scholar.google.com/scholar?q=ramas+de+la+economía" class="resource-btn" target="_blank">Google Académico</a>
+                            <a href="https://scielo.org/es/buscar/?q=macroeconomía+microeconomía" class="resource-btn" target="_blank">SciELO</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Unidad 3 -->
+                <div class="unit-card">
+                    <h3 class="unit-title"><i class="fas fa-3"></i> Unidad 3: Teoría Monetaria</h3>
+                    <div class="unit-content">
+                        <h4>Objetivos Específicos</h4>
+                        <ul>
+                            <li>Comprender el origen del dinero y sus funciones</li>
+                            <li>Evaluar los fenómenos monetarios que afectan a la sociedad</li>
+                            <li>Analizar el funcionamiento del sistema financiero nacional</li>
+                        </ul>
+                        
+                        <h4>Contenidos</h4>
+                        <ul>
+                            <li>Origen y esencia del dinero</li>
+                            <li>Funciones del dinero y precios</li>
+                            <li>Sistema financiero y finanzas públicas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resources">
+                        <h4><i class="fas fa-link"></i> Recursos Digitales</h4>
+                        <div class="resource-links">
+                            <a href="https://scholar.google.com/scholar?q=teoría+monetaria" class="resource-btn" target="_blank">Google Académico</a>
+                            <a href="https://scielo.org/es/buscar/?q=sistema+financiero" class="resource-btn" target="_blank">SciELO</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Unidad 4 -->
+                <div class="unit-card">
+                    <h3 class="unit-title"><i class="fas fa-4"></i> Unidad 4: Proceso Económico</h3>
+                    <div class="unit-content">
+                        <h4>Objetivos Específicos</h4>
+                        <ul>
+                            <li>Interpretar el proceso económico en sus fases</li>
+                            <li>Clasificar los elementos de la producción</li>
+                            <li>Contrastar el proceso económico desde las necesidades</li>
+                        </ul>
+                        
+                        <h4>Contenidos</h4>
+                        <ul>
+                            <li>Producción, distribución, cambio y consumo</li>
+                            <li>Elementos del proceso de producción</li>
+                            <li>Necesidades, utilidad y valor</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resources">
+                        <h4><i class="fas fa-link"></i> Recursos Digitales</h4>
+                        <div class="resource-links">
+                            <a href="https://scholar.google.com/scholar?q=proceso+económico" class="resource-btn" target="_blank">Google Académico</a>
+                            <a href="https://scielo.org/es/buscar/?q=producción+economía" class="resource-btn" target="_blank">SciELO</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Unidad 5 -->
+                <div class="unit-card">
+                    <h3 class="unit-title"><i class="fas fa-5"></i> Unidad 5: Economía Internacional</h3>
+                    <div class="unit-content">
+                        <h4>Objetivos Específicos</h4>
+                        <ul>
+                            <li>Interpretar temas actuales de la economía internacional</li>
+                            <li>Analizar el fenómeno de la globalización</li>
+                            <li>Evaluar los efectos económicos de los acuerdos de paz</li>
+                        </ul>
+                        
+                        <h4>Contenidos</h4>
+                        <ul>
+                            <li>Economía internacional y balanza de pagos</li>
+                            <li>Globalización económica</li>
+                            <li>Desarrollo económico y ciclos económicos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resources">
+                        <h4><i class="fas fa-link"></i> Recursos Digitales</h4>
+                        <div class="resource-links">
+                            <a href="https://scholar.google.com/scholar?q=economía+internacional" class="resource-btn" target="_blank">Google Académico</a>
+                            <a href="https://scielo.org/es/buscar/?q=globalización" class="resource-btn" target="_blank">SciELO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="bibliografia" class="section">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Bibliografía</h2>
+            <p>Libros de referencia para el curso con enlaces a recursos en línea:</p>
+            
+            <div class="book-grid">
+                <!-- Libro 1 -->
+                <div class="book-card">
+                    <div class="book-header">
+                        <i class="fas fa-book fa-2x"></i>
+                    </div>
+                    <div class="book-body">
+                        <h3 class="book-title">Introducción a la Economía</h3>
+                        <div class="book-author">Mendizábal M., F. J. (2000)</div>
+                        <a href="https://scholar.google.com/scholar?q=Introducción+a+la+Economía+Mendizábal" class="book-link" target="_blank">Acceder al libro</a>
+                    </div>
+                </div>
+                
+                <!-- Libro 2 -->
+                <div class="book-card">
+                    <div class="book-header">
+                        <i class="fas fa-book fa-2x"></i>
+                    </div>
+                    <div class="book-body">
+                        <h3 class="book-title">Fundamentos de Economía</h3>
+                        <div class="book-author">Méndez M., José Silvestre</div>
+                        <a href="https://scholar.google.com/scholar?q=Fundamentos+de+Economía+Méndez" class="book-link" target="_blank">Acceder al libro</a>
+                    </div>
+                </div>
+                
+                <!-- Libro 3 -->
+                <div class="book-card">
+                    <div class="book-header">
+                        <i class="fas fa-book fa-2x"></i>
+                    </div>
+                    <div class="book-body">
+                        <h3 class="book-title">Principios de Economía</h3>
+                        <div class="book-author">Mochón, Francisco (2005)</div>
+                        <a href="https://scholar.google.com/scholar?q=Principios+de+Economía+Mochón" class="book-link" target="_blank">Acceder al libro</a>
+                    </div>
+                </div>
+                
+                <!-- Libro 4 -->
+                <div class="book-card">
+                    <div class="book-header">
+                        <i class="fas fa-book fa-2x"></i>
+                    </div>
+                    <div class="book-body">
+                        <h3 class="book-title">Economía</h3>
+                        <div class="book-author">Samuelson, Paul A. & Nordhaus</div>
+                        <a href="https://scholar.google.com/scholar?q=Economía+Samuelson" class="book-link" target="_blank">Acceder al libro</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="calendario" class="section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Calendario Académico</h2>
+            
+            <div class="calendar">
+                <div class="calendar-card">
+                    <h3 class="calendar-title"><i class="fas fa-clipboard-check"></i> Evaluaciones</h3>
+                    <ul class="event-list">
+                        <li>
+                            <div class="event-date">
+                                <div class="event-day">15</div>
+                                <div class="event-month">Sep</div>
+                            </div>
+                            <div class="event-info">
+                                <div class="event-title">Primer Examen Parcial</div>
+                                <div class="event-desc">Unidades 1 y 2</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-date">
+                                <div class="event-day">20</div>
+                                <div class="event-month">Oct</div>
+                            </div>
+                            <div class="event-info">
+                                <div class="event-title">Segundo Examen Parcial</div>
+                                <div class="event-desc">Unidades 3 y 4</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-date">
+                                <div class="event-day">10</div>
+                                <div class="event-month">Nov</div>
+                            </div>
+                            <div class="event-info">
+                                <div class="event-title">Examen Final</div>
+                                <div class="event-desc">Todo el contenido</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="calendar-card">
+                    <h3 class="calendar-title"><i class="fas fa-tasks"></i> Entregas</h3>
+                    <ul class="event-list">
+                        <li>
+                            <div class="event-date">
+                                <div class="event-day">5</div>
+                                <div class="event-month">Sep</div>
+                            </div>
+                            <div class="event-info">
+                                <div class="event-title">Glosario Económico</div>
+                                <div class="event-desc">Términos clave de la Unidad 1</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-date">
+                                <div class="event-day">25</div>
+                                <div class="event-month">Oct</div>
+                            </div>
+                            <div class="event-info">
+                                <div class="event-title">Análisis de Caso</div>
+                                <div class="event-desc">Sistema financiero nacional</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-date">
+                                <div class="event-day">5</div>
+                                <div class="event-month">Nov</div>
+                            </div>
+                            <div class="event-info">
+                                <div class="event-title">Proyecto Final</div>
+                                <div class="event-desc">Economía guatemalteca</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="recursos" class="section">
+            <h2 class="section-title"><i class="fas fa-link"></i> Recursos Académicos</h2>
+            
+            <div class="resources">
+                <h4><i class="fas fa-external-link-alt"></i> Plataformas de Investigación</h4>
+                <div class="resource-links">
+                    <a href="https://scholar.google.com" class="resource-btn" target="_blank"><i class="fas fa-search"></i> Google Académico</a>
+                    <a href="https://scielo.org" class="resource-btn" target="_blank"><i class="fas fa-book"></i> SciELO</a>
+                    <a href="https://www.jstor.org" class="resource-btn" target="_blank"><i class="fas fa-archive"></i> JSTOR</a>
+                    <a href="https://dialnet.unirioja.es" class="resource-btn" target="_blank"><i class="fas fa-database"></i> Dialnet</a>
+                </div>
+            </div>
+            
+            <div class="resources" style="margin-top: 25px; background: rgba(26, 58, 95, 0.1);">
+                <h4><i class="fas fa-database"></i> Bases de Datos Económicas</h4>
+                <div class="resource-links">
+                    <a href="https://datos.bancomundial.org" class="resource-btn" target="_blank"><i class="fas fa-globe-americas"></i> Banco Mundial</a>
+                    <a href="https://www.imf.org" class="resource-btn" target="_blank"><i class="fas fa-chart-line"></i> Fondo Monetario Internacional</a>
+                    <a href="https://www.cepal.org" class="resource-btn" target="_blank"><i class="fas fa-chart-bar"></i> CEPAL</a>
+                    <a href="https://www.banguat.gob.gt" class="resource-btn" target="_blank"><i class="fas fa-landmark"></i> BANGUAT</a>
+                </div>
+            </div>
+            
+            <div class="resources" style="margin-top: 25px; background: rgba(212, 175, 55, 0.1);">
+                <h4><i class="fas fa-book-reader"></i> Recursos del Dr. Chávez Mejía</h4>
+                <div class="resource-links">
+                    <a href="#" class="resource-btn"><i class="fas fa-file-pdf"></i> Apuntes de Clase</a>
+                    <a href="#" class="resource-btn"><i class="fas fa-video"></i> Videoconferencias</a>
+                    <a href="#" class="resource-btn"><i class="fas fa-chart-pie"></i> Casos de Estudio</a>
+                    <a href="#" class="resource-btn"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-chalkboard-teacher"></i> Dr. José Rodolfo Chávez Mejías</li>
+                        <li><i class="fas fa-envelope"></i> jrchavez@economia.edu.gt</li>
+                        <li><i class="fas fa-phone"></i> +502 1234-5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de Guatemala, Guatemala</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#descripcion">Descripción del Curso</a></li>
+                        <li><a href="#unidades">Unidades Temáticas</a></li>
+                        <li><a href="#bibliografia">Bibliografía</a></li>
+                        <li><a href="#calendario">Calendario</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://scholar.google.com" target="_blank">Google Académico</a></li>
+                        <li><a href="https://scielo.org" target="_blank">SciELO</a></li>
+                        <li><a href="https://www.jstor.org" target="_blank">JSTOR</a></li>
+                        <li><a href="https://dialnet.unirioja.es" target="_blank">Dialnet</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 - Dr. José Rodolfo Chávez Mejías. Todos los derechos reservados.<br>
+                Universidad Regional de Guatemala - Facultad de Ciencias Económicas.
+            </div>
+        </div>
+    </footer>
+    
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Set active section on page load
+        window.addEventListener('load', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            if (navLinks.length > 0) {
+                navLinks[0].classList.add('active');
+            }
+        });
+</body>
+</html>
